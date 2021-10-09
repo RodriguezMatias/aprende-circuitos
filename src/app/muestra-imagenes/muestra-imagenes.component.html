@@ -1,0 +1,5 @@
+<img class="images" src="../../assets/circuito1.svg" alt="circuito" />
+
+<div class="example-box" cdkDrag *ngFor="let c of curvas" (cdkDragEnded)="drop($event,c)">
+    <mat-card style="background: aquamarine; width: fit-content; border-radius: 15px;">{{c.numero}} {{c.descripcion}} Cambio:{{c.cambio}} x:{{c.x}} y:{{c.y}}</mat-card>
+</div>

@@ -1,0 +1,25 @@
+<p> Curva <input type="text" [(ngModel)]="curvaNueva.numero"></p>
+<p>Descipcion <input type="text" [(ngModel)]="curvaNueva.descripcion"></p>
+<p>Cambio <input type="text" [(ngModel)]="curvaNueva.cambio"> </p>
+<button (click)="agregar()">Agregar</button>
+
+<p>Anotaciones</p>
+<input type="text">
+<button (click)="agregar()">Agregar</button>
+
+<mat-card *ngFor="let c of curva">
+
+    <div *ngIf="editModal">
+        <p>Numero de curva: <input type="text" [(ngModel)]="c.numero"></p>
+        <p>Descripcion: <input type="text" [(ngModel)]="c.descripcion"></p>
+        <p>Cambio: <input type="text" [(ngModel)]="c.cambio"> </p>
+        x: {{c.x}} y: {{c.y}}
+        <button>Aceptar</button>
+        <button (click)="eliminar(c)">Eliminar</button>
+    </div>
+    <div *ngIf="!editModal">
+        Numero de curva: {{c.numero}} {{c.descripcion}} Cambio:{{c.cambio}} x: {{c.x}} y: {{c.y}}
+        <button (click)="editar(c)">Editar</button>
+        <button (click)="eliminar(c)">Eliminar</button>
+    </div>
+</mat-card>
