@@ -3,9 +3,10 @@
 </mat-toolbar>
 <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
-        <app-agrega-curva (curvaOutput)="addCurva($event)"></app-agrega-curva>
+        <app-carga-imagenes></app-carga-imagenes>
+        <app-agrega-curva (noteOutput)="addNote($event)" (curvaOutput)="addCurva($event)"></app-agrega-curva>
     </mat-drawer>
     <mat-drawer-content>
-        <app-muestra-imagenes [curvas]="curva"></app-muestra-imagenes>
+        <app-muestra-imagenes [curvas]="curva" [notes]="notes"></app-muestra-imagenes>
     </mat-drawer-content>
 </mat-drawer-container>

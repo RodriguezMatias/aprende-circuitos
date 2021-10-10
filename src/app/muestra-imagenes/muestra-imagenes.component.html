@@ -3,3 +3,7 @@
 <div class="example-box" cdkDrag *ngFor="let c of curvas" (cdkDragEnded)="drop($event,c)">
     <mat-card style="background: aquamarine; width: fit-content; border-radius: 15px;">{{c.numero}} {{c.descripcion}} Cambio:{{c.cambio}} x:{{c.x}} y:{{c.y}}</mat-card>
 </div>
+
+<div class="example-box" cdkDrag *ngFor="let n of notes" (cdkDragEnded)="dropNote($event,n)">
+    <mat-card style="background:lightcoral; width: fit-content; border-radius: 15px;">{{n.note}}x:{{n.x}} y:{{n.y}}</mat-card>
+</div>

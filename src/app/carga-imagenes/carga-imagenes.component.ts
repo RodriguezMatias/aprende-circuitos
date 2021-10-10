@@ -8,10 +8,12 @@ import { CargaArchivosService } from '../services/carga-archivos.service';
 })
 export class CargaImagenesComponent implements OnInit {
   fileToUpload: File | null = null;
-
+  images:string[] = ["circuito1.svg"];
   constructor(cargaArchivosService: CargaArchivosService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("images",this.images)
+  }
 
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);

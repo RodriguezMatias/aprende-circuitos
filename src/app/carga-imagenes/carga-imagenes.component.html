@@ -1,4 +1,17 @@
 <div class="form-group">
-    <label for="file">Choose File</label>
+    <label for="file">Cargar mediante archivo</label>
+
     <input type="file" id="file">
+    <button>Cargar Archivo</button>
+    <hr>
+    <p>Cargar mediante Url</p>
+    <input type="text">
+    <button>Cargar URL</button>
+    <hr>
 </div>
+Elegir imagen:
+<div *ngFor="let i of images">
+    Img {{i}}
+    <img style="width: 10vw;" src="../../assets/{{i}}" alt="">
+</div>
+<hr>

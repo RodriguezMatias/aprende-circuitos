@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Curva } from './curva';
+import { Notes } from './note';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-agrega-curva',
@@ -8,16 +11,21 @@ import { Curva } from './curva';
 })
 export class AgregaCurvaComponent implements OnInit {
 
-  @Output() curvaOutput = new EventEmitter<Curva[]>();
+  note="";
+  
 
-  @Output() curva: Curva[] = [
+  @Output() curvaOutput = new EventEmitter<Curva[]>();
+  @Output() noteOutput = new EventEmitter<Notes[]>();
+
+  curva: Curva[] = [
     { numero: 1, cambio: '5', descripcion: 'Curva 1', x: 1.5, y: 1.5 },
   ];
+  notes:Notes[] =[];
 
   curvaNueva:Curva =  { numero: 0, cambio: '', descripcion: '', x: -1, y: -1 };
   coordX = -1;
   coordY = -1;
-  editModal =false;
+  editModal = false;
 
 
   constructor() {
@@ -33,6 +41,10 @@ export class AgregaCurvaComponent implements OnInit {
     this.curvaOutput.emit(this.curva);
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.curva, event.previousIndex, event.currentIndex);
+  }
+
   agregar(){
     //console.log("emitimos",this.curvaNueva)
     this.curvaOutput.emit(this.curva);
@@ -40,7 +52,17 @@ export class AgregaCurvaComponent implements OnInit {
     this.curvaNueva = { numero: 0, cambio: '', descripcion: '', x: -1, y: -1 };
   }
 
-  eliminar(c:Curva) {
+  addNote(){
+    let addNote:Notes = {note:this.note,x:-1,y:-1};
+    this.noteOutput.emit(this.notes);
+    this.notes.push(addNote);
+  }
+
+  acceptEdit(){
+    this.editModal = false;
+  }
+
+  delete(c:Curva) {
     const index: number = this.curva.indexOf(c);
     if (index !== -1) {
         this.curva.splice(index, 1);
