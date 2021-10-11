@@ -24,6 +24,8 @@ export class DataAdderComponent implements OnInit {
   coordY:number;;
   editModal = false;
 
+  fileToUpload: File | null = null;
+
 
   constructor() {
     this.coordX = 0;
@@ -72,4 +74,23 @@ export class DataAdderComponent implements OnInit {
   editar(c:Data){
     this.editModal=true;
   }
+
+  saveData(){
+    this.saveText( JSON.stringify(this.mapData), "data.json" );
+  }
+
+  handleFileInput(files: FileList) {
+    //this.fileToUpload = files.item(0);
+    console.log("this.fileToUpload",this.fileToUpload)
+  }
+
+  saveText(text:string, filename:string){
+    var a = document.createElement('a');
+    a.setAttribute('href', 'data:text/plain;charset=utf-u,'+encodeURIComponent(text));
+    a.setAttribute('download', filename);
+    a.click()
+  }
+
+  
+  
 }
