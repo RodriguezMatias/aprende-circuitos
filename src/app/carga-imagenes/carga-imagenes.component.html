@@ -1,17 +1,38 @@
-<div class="form-group">
-    <label for="file">Cargar mediante archivo</label>
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Cargar Imagen
+        </mat-panel-title>
+        <mat-panel-description>
+            Acá agregas imagenes
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+        <label for="file">Cargar mediante archivo</label>
 
-    <input type="file" id="file">
-    <button>Cargar Archivo</button>
+        <input type="file" id="file">
+        <button>Cargar Archivo</button>
+        <hr>
+        <p>Cargar mediante Url</p>
+        <input type="text">
+        <button>Cargar URL</button>
+        <hr>
+    </div>
+</mat-expansion-panel>
+
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Elegir Imagen
+        </mat-panel-title>
+        <mat-panel-description>
+            Acá Elegis imagenes
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    Elegir imagen:
+    <div *ngFor="let i of images">
+        Img {{i}}
+        <img style="width: 10vw;" src="../../assets/{{i}}" alt="">
+    </div>
     <hr>
-    <p>Cargar mediante Url</p>
-    <input type="text">
-    <button>Cargar URL</button>
-    <hr>
-</div>
-Elegir imagen:
-<div *ngFor="let i of images">
-    Img {{i}}
-    <img style="width: 10vw;" src="../../assets/{{i}}" alt="">
-</div>
-<hr>
+</mat-expansion-panel>

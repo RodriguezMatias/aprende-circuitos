@@ -1,0 +1,55 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Agregar Curva
+        </mat-panel-title>
+        <mat-panel-description>
+            Acá agregas curvas
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Curva <input type="text" [(ngModel)]="curvaNueva.number"></p>
+    <p>Descipcion <input type="text" [(ngModel)]="curvaNueva.description"></p>
+    <p>Cambio <input type="text" [(ngModel)]="curvaNueva.gear"> </p>
+    <button (click)="addTurn()" [disabled]="curvaNueva.number === ''">Agregar</button>
+</mat-expansion-panel>
+
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Agregar Comentario
+        </mat-panel-title>
+        <mat-panel-description>
+            Acá agregas comentarios
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Anotaciones</p>
+    <input type="text" [(ngModel)]="note.description">
+    <button (click)="addNote()" [disabled]="note.description === ''">Agregar</button>
+</mat-expansion-panel>
+
+
+<p>Curvas/Comentarios:</p>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <mat-card cdkDrag style="background-color: #f5f5f5;" *ngFor="let d of mapData">
+
+        <div *ngIf="editModal">
+            <p *ngIf="d.data.number">Numero de curva: <input type="text" [(ngModel)]="d.data.number"></p>
+            <p *ngIf="d.data.description">Descripcion: <input type="text" [(ngModel)]="d.data.description"></p>
+            <p *ngIf="d.data.gear">Cambio: <input type="text" [(ngModel)]="d.data.gear"> </p>
+            x: {{d.x}} y: {{d.y}}
+            <button (click)=acceptEdit()>✔️</button>
+        </div>
+        <div *ngIf="!editModal">
+            <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
+            <p *ngIf="d.data.description">{{d.data.description}} </p>
+            <p *ngIf="d.data.gear">Cambio:{{d.data.gear}}</p>
+            <p *ngIf="d.x">X:{{d.x}}</p>
+            <p *ngIf="d.y">Y:{{d.y}}</p>
+            <button (click)="editar(d.data)">✏️</button>
+        </div>
+        <button (click)="delete(d)">❌</button>
+    </mat-card>
+    <mat-card *ngIf="mapData.length === 0">
+        Todavia no hay datos.
+    </mat-card>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Curva } from './agrega-curva/curva';
-import { Notes } from './agrega-curva/note';
+import { MapData } from './dto/MapData';
+
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,10 @@ import { Notes } from './agrega-curva/note';
 })
 export class AppComponent {
   title = 'aprende-circuitos';
-  curva: Curva[] = [];
-  notes: Notes[] = [];
+  mapData: MapData[] = [];
 
-  addCurva(newItem:Curva[]) {
-    this.curva = newItem;
-  }
-  addNote(newItem:Notes[]) {
-    this.notes = newItem;
+  addMapData(newItem:any) {
+    console.log("addMapData",this.mapData)
+    this.mapData = newItem;
   }
 }

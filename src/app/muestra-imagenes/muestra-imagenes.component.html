@@ -1,9 +1,11 @@
 <img class="images" src="../../assets/circuito1.svg" alt="circuito" />
 
-<div class="example-box" cdkDrag *ngFor="let c of curvas" (cdkDragEnded)="drop($event,c)">
-    <mat-card style="background: aquamarine; width: fit-content; border-radius: 15px;">{{c.numero}} {{c.descripcion}} Cambio:{{c.cambio}} x:{{c.x}} y:{{c.y}}</mat-card>
-</div>
-
-<div class="example-box" cdkDrag *ngFor="let n of notes" (cdkDragEnded)="dropNote($event,n)">
-    <mat-card style="background:lightcoral; width: fit-content; border-radius: 15px;">{{n.note}}x:{{n.x}} y:{{n.y}}</mat-card>
+<div class="example-box" cdkDrag *ngFor="let d of mapData" (cdkDragEnded)="drop($event,d)">
+    <mat-card class="dataCard">
+        <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
+        <p *ngIf="d.data.description">{{d.data.description}} </p>
+        <p *ngIf="d.data.gear">Cambio:{{d.data.gear}}</p>
+        <p *ngIf="d.x">X:{{d.x}}</p>
+        <p *ngIf="d.y">Y:{{d.y}}</p>
+    </mat-card>
 </div>

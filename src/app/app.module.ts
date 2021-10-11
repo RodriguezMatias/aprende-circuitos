@@ -9,18 +9,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { AgregaCurvaComponent } from './agrega-curva/agrega-curva.component';
 import {MatCardModule} from '@angular/material/card';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { DataAdderComponent } from './data-adder/data-adder';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
     AppComponent,
     CargaImagenesComponent,
     MuestraImagenesComponent,
-    AgregaCurvaComponent
+    DataAdderComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     DragDropModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

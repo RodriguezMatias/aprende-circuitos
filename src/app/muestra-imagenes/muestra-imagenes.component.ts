@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Curva } from '../agrega-curva/curva';
-import { Notes } from '../agrega-curva/note';
+import { Data } from '@angular/router';
+import { MapData } from '../dto/MapData';
 
 @Component({
   selector: 'app-muestra-imagenes',
@@ -9,8 +9,7 @@ import { Notes } from '../agrega-curva/note';
 })
 export class MuestraImagenesComponent implements OnInit {
 
-  @Input() curvas: Curva[] = [];
-  @Input() notes: Notes[] = [];
+  @Input() mapData: MapData[] = [];
 
 
   constructor() { }
@@ -19,18 +18,11 @@ export class MuestraImagenesComponent implements OnInit {
 
   }
 
-  drop(ev:any,c:Curva): void {
+  drop(ev:any,d:Data): void {
     //console.log('element dropped');
     //console.log(ev);
-    c.x = ev.dropPoint.x;
-    c.y = ev.dropPoint.y;
-  }
-
-  dropNote(ev:any,n:Notes): void {
-    //console.log('element dropped');
-    //console.log(ev);
-    n.x = ev.dropPoint.x;
-    n.y = ev.dropPoint.y;
+    d.x = ev.dropPoint.x;
+    d.y = ev.dropPoint.y;
   }
 
 }

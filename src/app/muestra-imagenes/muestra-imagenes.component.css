@@ -1,3 +1,12 @@
 .images {
-    width: 60vw;
+    height: 80vh;
+}
+
+.dataCard {
+    width: fit-content;
+    background-color: lightgoldenrodyellow;
+    font-size: small;
+    line-height: 3px;
+    padding: 8px;
+    font-family: monospace;
 }

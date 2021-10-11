@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgregaCurvaComponent } from './agrega-curva.component';
+import { AgregaCurvaComponent } from './data-adder';
 
 describe('AgregaCurvaComponent', () => {
   let component: AgregaCurvaComponent;
