@@ -10,12 +10,14 @@ import { MapData } from '../dto/MapData';
 export class MuestraImagenesComponent implements OnInit {
 
   @Input() mapData: MapData[] = [];
+  debug=false;
+  @Input() image!:string;
 
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-
+    this.image = "default.jpg"
   }
 
   drop(ev:any,d:Data): void {

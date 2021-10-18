@@ -32,14 +32,7 @@ export class DataAdderComponent implements OnInit {
     this.coordY = 0;
   }
 
-  ngOnInit(): void {
-    // let self = this;
-    // document.body.addEventListener('click', function (e) {
-    //   //console.log('cursor-location: ' + e.clientX + ',' + e.clientY);
-    //   self.coordX = e.clientX.valueOf();
-    //   self.coordY = e.clientY.valueOf();
-    // });
-  }
+  ngOnInit(): void {}
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.mapData, event.previousIndex, event.currentIndex);
@@ -47,7 +40,6 @@ export class DataAdderComponent implements OnInit {
 
   //adds turn data
   addTurn(){
-    //console.log("emitimos",this.mapData);
     this.mapDataOutput.emit(this.mapData);
     const data : MapData = {data: this.curvaNueva,x:this.coordX,y:this.coordY};
     this.mapData.push(data);
@@ -56,6 +48,7 @@ export class DataAdderComponent implements OnInit {
 
   addNote(){
     const data : MapData = {data: this.note,x:this.coordX,y:this.coordY};
+    this.note = {number: '', gear: '', description: ''};
     this.mapData.push(data);
     this.mapDataOutput.emit(this.mapData);
   }
@@ -71,7 +64,7 @@ export class DataAdderComponent implements OnInit {
     }
     this.mapDataOutput.emit(this.mapData);
 }
-  editar(c:Data){
+  edit(c:Data){
     this.editModal=true;
   }
 
@@ -80,7 +73,6 @@ export class DataAdderComponent implements OnInit {
   }
 
   handleFileInput(files: FileList) {
-    //this.fileToUpload = files.item(0);
     console.log("this.fileToUpload",this.fileToUpload)
   }
 
@@ -90,7 +82,4 @@ export class DataAdderComponent implements OnInit {
     a.setAttribute('download', filename);
     a.click()
   }
-
-  
-  
 }

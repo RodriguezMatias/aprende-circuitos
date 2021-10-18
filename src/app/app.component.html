@@ -1,12 +1,18 @@
-<mat-toolbar>
-    <span>Notas de circuito</span>
+<mat-toolbar style="height: 5vh;">
+    <mat-toolbar>
+        <span>Notas de circuito</span>
+        <mat-icon class="mr-8">brightness_5</mat-icon>
+        <mat-slide-toggle [formControl]="toggleControl" class="mr-8">
+        </mat-slide-toggle>
+        <mat-icon>bedtime</mat-icon>
+    </mat-toolbar>
 </mat-toolbar>
-<mat-drawer-container>
+<mat-drawer-container style="height: 95vh;">
     <mat-drawer mode="side" opened class="container-left">
-        <app-carga-imagenes></app-carga-imagenes>
+        <app-carga-imagenes (imagesOutput)="addImage($event)"></app-carga-imagenes>
         <app-data-adder (mapDataOutput)="addMapData($event)"></app-data-adder>
     </mat-drawer>
     <mat-drawer-content class="container-right">
-        <app-muestra-imagenes [mapData]="mapData"></app-muestra-imagenes>
+        <app-muestra-imagenes [mapData]="mapData" [image]="image"></app-muestra-imagenes>
     </mat-drawer-content>
 </mat-drawer-container>

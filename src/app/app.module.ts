@@ -11,17 +11,22 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DataAdderComponent } from './data-adder/data-adder';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
     AppComponent,
     CargaImagenesComponent,
     MuestraImagenesComponent,
-    DataAdderComponent
+    DataAdderComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +38,14 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCardModule,
     DragDropModule,
     FormsModule,
+    ReactiveFormsModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

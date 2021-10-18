@@ -1,3 +1,27 @@
 .ionicon {
     width: 2rem;
 }
+
+.dataList {
+    display: flex;
+}
+
+.deleteButton {
+    position: absolute;
+    right: 0;
+    bottom: 0.5em;
+    height: 3em;
+    aspect-ratio: 1;
+}
+
+.editButton {
+    position: absolute;
+    right: 3.2em;
+    bottom: 0.5em;
+    height: 3em;
+    aspect-ratio: 1;
+}
+
+mat-form-field {
+    display: initial;
+}

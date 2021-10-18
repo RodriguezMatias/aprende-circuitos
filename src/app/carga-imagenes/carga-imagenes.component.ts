@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CargaArchivosService } from '../services/carga-archivos.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-carga-imagenes',
@@ -7,19 +7,18 @@ import { CargaArchivosService } from '../services/carga-archivos.service';
   styleUrls: ['./carga-imagenes.component.css'],
 })
 export class CargaImagenesComponent implements OnInit {
-  fileToUpload: File | null = null;
-  images:string[] = ["circuito1.svg"];
-  constructor(cargaArchivosService: CargaArchivosService) {}
+  images:string[] = ["Spa_Black.png","Spa_White.png"];
+  constructor() {}
 
-  ngOnInit(): void {
-    console.log("images",this.images)
+  @Output() imagesOutput = new EventEmitter<string>();
+
+
+  ngOnInit(): void {}
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.images, event.previousIndex, event.currentIndex);
   }
-
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-
-  uploadFileToActivity() {
-
+  selectBackground(image:string){
+    this.imagesOutput.emit(image);
   }
 }

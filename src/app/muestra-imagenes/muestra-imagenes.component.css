@@ -1,5 +1,13 @@
 .images {
-    height: 80vh;
+    height: 70vh;
+    background-size: cover;
+    width: auto;
+    background-position: 50% 50%;
+}
+
+.background {
+    position: absolute;
+    height: 100vh;
 }
 
 .dataCard {
@@ -9,4 +17,27 @@
     line-height: 3px;
     padding: 8px;
     font-family: monospace;
+}
+
+.configMatCard {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.font {
+    font-size: 2vw;
+    font-family: cursive;
+}
+
+.container {
+    position: relative;
+}
+
+.isDraggable {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: lightgray;
+    padding: 5px;
 }
