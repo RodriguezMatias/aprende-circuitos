@@ -10,13 +10,17 @@
     height: 100vh;
 }
 
+.startCoords {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
 .dataCard {
     width: fit-content;
     background-color: lightgoldenrodyellow;
-    font-size: small;
     line-height: 3px;
     padding: 8px;
-    font-family: monospace;
 }
 
 .configMatCard {
@@ -26,8 +30,8 @@
 }
 
 .font {
-    font-size: 2vw;
     font-family: cursive;
+    color: black;
 }
 
 .container {

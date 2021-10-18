@@ -3,17 +3,14 @@
         <mat-panel-title>
             Guardar/Cargar
         </mat-panel-title>
-        <mat-panel-description>
-            <mat-icon>keyboard_arrow_down</mat-icon>
-        </mat-panel-description>
+        <mat-icon>keyboard_arrow_down</mat-icon>
     </mat-expansion-panel-header>
-    <button (click)="saveData()">Guardar</button>
-    <div class="form-group">
-        <label for="file">Cargar (TBD)</label>
-        <!-- <input type="file" id="file" (change)="handleFileInput($event!.target.files)"> -->
-        <input type="file" id="file">
-    </div>
-
+    <button mat-raised-button color="primary" style="float:right" matSuffix mat-icon-button aria-label="Clear" (click)="saveData()">
+      <mat-icon>save</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" style="float:right" matSuffix mat-icon-button aria-label="Clear" [disabled]=true (click)="saveData()">
+      <mat-icon>add</mat-icon>
+    </button>
 </mat-expansion-panel>
 <h2>Agregar Informacion</h2>
 <mat-expansion-panel hideToggle>
@@ -52,10 +49,16 @@
     <mat-card cdkDrag class="dataList" *ngFor="let d of mapData">
 
         <div *ngIf="editModal">
-            <p *ngIf="d.data.number">Numero de curva: <input type="text" [(ngModel)]="d.data.number"></p>
-            <p *ngIf="d.data.description">Descripcion: <input type="text" [(ngModel)]="d.data.description"></p>
-            <p *ngIf="d.data.gear">Cambio: <input type="text" [(ngModel)]="d.data.gear"> </p>
+            <mat-form-field *ngIf="d.data.number" class="form-field" appearance="fill">Número<input matInput type="text" [(ngModel)]="d.data.number"></mat-form-field>
+            <mat-form-field *ngIf="d.data.description" class="form-field" appearance="fill">Descripción<input matInput type="text" [(ngModel)]="d.data.description"></mat-form-field>
+            <mat-form-field *ngIf="d.data.gear" class="form-field" appearance="fill">Marcha<input matInput type="text" [(ngModel)]="d.data.gear"></mat-form-field>
             x: {{d.x}} y: {{d.y}}
+            <button mat-raised-button color="primary" *ngIf="editModal" style="float:right" matSuffix mat-icon-button aria-label="Clear" [disabled]=true>
+              <mat-icon>zoom_in</mat-icon>
+            </button>
+            <button mat-raised-button color="primary" *ngIf="editModal" style="float:right" matSuffix mat-icon-button aria-label="Clear" [disabled]=true>
+              <mat-icon>zoom_out</mat-icon>
+            </button>
         </div>
         <div *ngIf="!editModal">
             <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
@@ -63,10 +66,20 @@
             <p *ngIf="d.data.gear">Cambio:{{d.data.gear}}</p>
             <p *ngIf="d.x">X:{{d.x}}</p>
             <p *ngIf="d.y">Y:{{d.y}}</p>
+
         </div>
-        <button mat-button color="primary" *ngIf="editModal" class="editButton" (click)=acceptEdit()>✔️</button>
-        <button mat-button color="primary" *ngIf="!editModal" class="editButton" (click)="edit(d.data)">✏️</button>
-        <button mat-button color="primary" class="deleteButton" (click)="delete(d)">❌</button>
+
+
+        <button mat-raised-button color="primary" *ngIf="editModal" class="editButton" style="float:right" matSuffix mat-icon-button aria-label="Clear" (click)=acceptEdit()>
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-raised-button color="primary" *ngIf="!editModal" class="editButton" style="float:right" matSuffix mat-icon-button aria-label="Clear" (click)="edit(d.data)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-raised-button color="primary" class="deleteButton" style="float:right" matSuffix mat-icon-button aria-label="Clear" (click)="delete(d)">
+          <mat-icon>delete</mat-icon>
+        </button>
     </mat-card>
     <mat-card *ngIf="mapData.length === 0">
         Todavia no hay datos.
