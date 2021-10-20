@@ -7,3 +7,12 @@
     width: 75vw;
     height: 95vh;
 }
+
+.preset-container {
+    display: flex;
+    margin: 0 10px 0 10px;
+}
+
+.preset-item {
+    margin: 0 10px 0 10px;
+}

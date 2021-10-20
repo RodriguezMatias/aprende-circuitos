@@ -1,9 +1,8 @@
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title>
             Guardar/Cargar
         </mat-panel-title>
-        <mat-icon>keyboard_arrow_down</mat-icon>
     </mat-expansion-panel-header>
     <button mat-raised-button color="primary" style="float:right" matSuffix mat-icon-button aria-label="Clear" (click)="saveData()">
       <mat-icon>save</mat-icon>
@@ -13,12 +12,11 @@
     </button>
 </mat-expansion-panel>
 <h2>Agregar Informacion</h2>
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title>
             Agregar Curva
         </mat-panel-title>
-        <mat-icon>keyboard_arrow_down</mat-icon>
     </mat-expansion-panel-header>
     <div class="matContent">
         <mat-form-field class="form-field" appearance="fill">Número<input matInput type="text" [(ngModel)]="curvaNueva.number"></mat-form-field>
@@ -30,12 +28,11 @@
     </div>
 </mat-expansion-panel>
 
-<mat-expansion-panel hideToggle>
+<mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title>
             Agregar Comentario
         </mat-panel-title>
-        <mat-icon>keyboard_arrow_down</mat-icon>
     </mat-expansion-panel-header>
     <mat-form-field class="form-field" appearance="fill">Comentario <input matInput type="text" [(ngModel)]="note.description"></mat-form-field>
     <button mat-raised-button color="primary" style="float:right" matSuffix mat-icon-button aria-label="Clear" (click)="addNote()" [disabled]="note.description === ''">
@@ -45,6 +42,7 @@
 
 
 <h2>Curvas/Comentarios:</h2>
+
 <div cdkDropList (cdkDropListDropped)="drop($event)">
     <mat-card cdkDrag class="dataList" *ngFor="let d of mapData">
 
@@ -64,9 +62,8 @@
             <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
             <p *ngIf="d.data.description">{{d.data.description}} </p>
             <p *ngIf="d.data.gear">Cambio:{{d.data.gear}}</p>
-            <p *ngIf="d.x">X:{{d.x}}</p>
-            <p *ngIf="d.y">Y:{{d.y}}</p>
-
+            <!-- <p *ngIf="d.x">X:{{d.x}}</p>
+            <p *ngIf="d.y">Y:{{d.y}}</p> -->
         </div>
 
 

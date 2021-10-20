@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Data } from '@angular/router';
 import { MapData } from '../dto/MapData';
 
@@ -13,18 +13,26 @@ export class MuestraImagenesComponent implements OnInit {
   debug=false;
   @Input() image!:string;
 
-  constructor() {
+  backcolor:string;
+
+  constructor(private elRef: ElementRef) {
+    this.backcolor="red";
   }
 
   ngOnInit(): void {
-    this.image = "default.jpg"
+    this.image = "default.jpg";
   }
 
   drop(ev:any,d:Data): void {
-    //console.log('element dropped');
-    //console.log(ev);
-    d.x = ev.dropPoint.x;
-    d.y = ev.dropPoint.y;
+     d.x = ev.dropPoint.x;
+     d.y = ev.dropPoint.y;
   }
+
+  movementY(y:number){
+    return y.toString()+'px';
+  }
+   movementX(x:number){
+     return 'calc(-25vw + '+x.toString()+'px)';
+   }
 
 }

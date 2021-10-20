@@ -1,5 +1,17 @@
-<img class="images" src="../../assets/{{image}}" alt="circuito" />
-<div class="background"></div>
+<div class="background">
+
+    <img class="images" src="../../assets/{{image}}" alt="circuito" />
+
+    <div cdkDrag *ngFor="let d of mapData" (cdkDragEnded)="drop($event,d)">
+        <mat-card class="dataCard font" [ngStyle]="{ left:movementX(d.x),top:movementY(d.y)}">
+            <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
+            <p *ngIf="d.data.description">{{d.data.description}}</p>
+            <p *ngIf="d.data.gear">Cambio:{{d.data.gear}}</p>
+            <p *ngIf="d.x && debug">X:{{d.x}}</p>
+            <p *ngIf="d.y && debug">Y:{{d.y}}</p>
+        </mat-card>
+    </div>
+</div>
 
 <mat-card class="dataCard configMatCard">
     <mat-card-header>
@@ -10,13 +22,3 @@
     </mat-card-content>
 
 </mat-card>
-
-<div class="startCoords" cdkDrag *ngFor="let d of mapData" (cdkDragEnded)="drop($event,d)">
-    <mat-card class="dataCard font">
-        <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
-        <p *ngIf="d.data.description">{{d.data.description}} </p>
-        <p *ngIf="d.data.gear">Cambio:{{d.data.gear}}</p>
-        <p *ngIf="d.x && debug">X:{{d.x}}</p>
-        <p *ngIf="d.y && debug">Y:{{d.y}}</p>
-    </mat-card>
-</div>
