@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Data } from '@angular/router';
 import { MapData } from '../dto/MapData';
 
@@ -14,25 +14,50 @@ export class MuestraImagenesComponent implements OnInit {
   @Input() image!:string;
 
   backcolor:string;
+  onDrag=false;
 
   constructor(private elRef: ElementRef) {
     this.backcolor="red";
   }
 
+  click()
+  {
+    console.log("click")
+  }
+
   ngOnInit(): void {
     this.image = "default.jpg";
   }
-
-  drop(ev:any,d:Data): void {
-     d.x = ev.dropPoint.x;
-     d.y = ev.dropPoint.y;
+  moveData() {
+    throw new Error('Method not implemented.');
   }
+
+   drop(el:any,d:Data) {
+    let x = 0;
+    let y = 0;
+    while(el && !isNaN(el.offsetLeft) && !isNaN(el.offsetTop)) {
+      x += el.offsetLeft - el.scrollLeft;
+      y += el.offsetTop - el.scrollTop;
+      el = el.offsetParent;
+    }
+    return { top: y, left: x };
+   }
 
   movementY(y:number){
-    return y.toString()+'px';
+   // console.log("y",y)
+    return y+'px';
   }
-   movementX(x:number){
-     return 'calc(-25vw + '+x.toString()+'px)';
-   }
+  movementX(x:number){
+   // console.log("xxx",x)
+    return x+'px';
+  }
+  onDragEnded(event:any,d:Data) {
+    let element = event.source.getRootElement();
+    let boundingClientRect = element.getBoundingClientRect();
+    let parentPosition = this.drop(element,d);
+    //console.log('x: ' + (boundingClientRect.x - parentPosition.left), 'y: ' + (boundingClientRect.y - parentPosition.top));
+    d.x = (boundingClientRect.x - parentPosition.left);
+    d.y = (boundingClientRect.y - parentPosition.top);
+  }
 
 }

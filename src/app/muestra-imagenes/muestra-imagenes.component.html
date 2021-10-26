@@ -1,8 +1,5 @@
 <div class="background">
-
-    <img class="images" src="../../assets/{{image}}" alt="circuito" />
-
-    <div cdkDrag *ngFor="let d of mapData" (cdkDragEnded)="drop($event,d)">
+    <div cdkDrag *ngFor="let d of mapData" (cdkDragEnded)="onDragEnded($event,d)">
         <mat-card class="dataCard font" [ngStyle]="{ left:movementX(d.x),top:movementY(d.y)}">
             <p *ngIf="d.data.number">Curva:{{d.data.number}}</p>
             <p *ngIf="d.data.description">{{d.data.description}}</p>
@@ -12,6 +9,8 @@
         </mat-card>
     </div>
 </div>
+
+<img class="images" src="../../assets/{{image}}" alt="circuito" />
 
 <mat-card class="dataCard configMatCard">
     <mat-card-header>

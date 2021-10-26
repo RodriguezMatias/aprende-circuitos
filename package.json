@@ -20,6 +20,11 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@types/cordova": "^0.0.34",
+    "@types/cordova-plugin-file": "^4.3.2",
+    "angular-file-uploader": "^7.1.0",
+    "angular-material-fileupload": "^3.0.2",
+    "ngx-file-drop": "^11.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

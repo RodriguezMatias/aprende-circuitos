@@ -1,12 +1,11 @@
 .images {
-    height: 85vh;
-    background-size: cover;
-    width: 75vw;
+    object-fit: cover;
 }
 
 .background {
-    position: absolute;
-    height: 100vh;
+    position: fixed;
+    height: 1080px;
+    width: 1920px;
 }
 
 .startCoords {
@@ -16,7 +15,6 @@
 }
 
 .dataCard {
-    position: absolute;
     width: fit-content;
     background-color: lightgoldenrodyellow;
     line-height: 3px;

@@ -39,7 +39,7 @@ ngOnInit(): void {
 
   loadPreset(preset:number){
     this.image="Spa_White.png";
-    this.mapData = [{"data":{"number":"1 ","gear":"V","description":"asd"},"x":672,"y":259},{"data":{"number":"","gear":"","description":"Ojo subida"},"x":1078,"y":164},{"data":{"number":"","gear":"","description":"Ojo"},"x":1016,"y":138}];
+    this.mapData = [{"data":{"number":"","gear":"","description":"1"},"x":164,"y":137.046875},{"data":{"number":"","gear":"","description":"2"},"x":152,"y":53.046875},{"data":{"number":"","gear":"","description":"3"},"x":341,"y":33.046875},{"data":{"number":"","gear":"","description":"4"},"x":247,"y":61.046875}];
   }
 
 }

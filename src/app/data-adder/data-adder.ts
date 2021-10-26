@@ -16,12 +16,13 @@ export class DataAdderComponent implements OnInit {
 
   data: Data = {};
   mapData:MapData[] = [];
+  loadValue='';
 
 
   note:Data = {number: '', gear: '', description: ''};
   curvaNueva:Data =  {number: '', gear: '', description: ''};
   coordX:number;
-  coordY:number;;
+  coordY:number;
   editModal = false;
 
   fileToUpload: File | null = null;
@@ -32,7 +33,9 @@ export class DataAdderComponent implements OnInit {
     this.coordY = 0;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.mapData, event.previousIndex, event.currentIndex);
@@ -70,6 +73,12 @@ export class DataAdderComponent implements OnInit {
 
   saveData(){
     this.saveText( JSON.stringify(this.mapData), "data.json" );
+  }
+  loadData(){
+  console.log("xo",this.loadValue)
+  this.mapData = JSON.parse(this.loadValue);
+
+  this.mapDataOutput.emit(this.mapData);
   }
 
   handleFileInput(files: FileList) {

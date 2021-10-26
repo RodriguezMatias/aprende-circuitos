@@ -21,6 +21,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
+import { HttpClientModule } from "@angular/common/http";
+
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatIconModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
